@@ -1,0 +1,15 @@
+---
+  # Play1- set server timezone
+  - name: Set system timezone
+    hosts: linux
+    become: true
+    tasks:
+      - name: Set system timezone to Asis/Dhaka
+        timezone:
+          name: Asia/Dhaka
+
+      - name: Restart service cron on CentOS
+        systemd:
+          state: restarted
+          name: crond
+...
