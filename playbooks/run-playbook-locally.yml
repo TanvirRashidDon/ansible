@@ -1,0 +1,10 @@
+---
+- name: Run sample command locally using hosts params
+  hosts: localhost
+  tasks:
+    - name: Get OS name and version
+      shell: "cat /etc/os-release | head -3 | tail -2"
+      register: "output"
+
+    - debug: var=output.stdout_lines
+...

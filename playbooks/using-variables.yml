@@ -1,0 +1,25 @@
+---
+- name: Lets play with variables
+  hosts: linux
+  become: true
+  vars:
+    get_os_name_command: "cat /etc/os-release | head -1"
+    get_os_version_command: "cat /etc/os-release | head -2 | tail -1"
+  tasks:
+
+    - name: Get os name
+      shell: "{{ get_os_name_command }}"
+      register: os_name
+
+    - name: Get os version
+      shell: "{{ get_os_version_command }}"
+      register: os_version
+
+    - name: Print os name
+      debug:
+        var: os_name.stdout
+
+    - name: Print os version
+      debug:
+        var: os_version.stdout
+...

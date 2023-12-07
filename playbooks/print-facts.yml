@@ -1,0 +1,8 @@
+---
+- name: Gather all facts from managed node
+  hosts: linux
+  become: true
+  tasks:
+    - name: Print facts
+      debug:
+        var: ansible_facts

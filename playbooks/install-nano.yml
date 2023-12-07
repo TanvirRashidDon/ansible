@@ -2,7 +2,7 @@
 - name: Install nano in linux serever
   hosts: linux
   tasks:
-    - name:  Install latest nano 
+    - name: Install latest nano
       yum:
         name: nano
       become: true
