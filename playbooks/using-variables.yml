@@ -3,16 +3,18 @@
   hosts: linux
   become: true
   vars:
-    get_os_name_command: "cat /etc/os-release | head -1"
-    get_os_version_command: "cat /etc/os-release | head -2 | tail -1"
+    command:
+      get_os_name: "cat /etc/os-release | head -1"
+      get_os_version: "cat /etc/os-release | head -2 | tail -1"
   tasks:
 
     - name: Get os name
-      shell: "{{ get_os_name_command }}"
+      shell: "{{ command['get_os_name'] }}" 
       register: os_name
 
     - name: Get os version
-      shell: "{{ get_os_version_command }}"
+      # this style cause naming colide with python dictionaries
+      shell: "{{ command.get_os_version }}"
       register: os_version
 
     - name: Print os name
