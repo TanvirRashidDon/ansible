@@ -1,3 +1,0 @@
----
-is_centos: ansible_distribution == "CentOS"
-...
