@@ -1,7 +1,7 @@
 ## host group goes here
 
 [linux]
-192.168.122.73
+192.168.122.72
 
 [linux:vars]
 

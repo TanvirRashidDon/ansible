@@ -1,0 +1,14 @@
+---
+- name: Get IPs from group
+  hosts: localhost
+  gather_facts: no
+  vars:
+    group_name: linux
+    ips_of_managed_nodes: "{{ groups[group_name] }}"
+  tasks:
+
+  - name: print Ips by group
+    debug:
+      msg: >
+        Group {{ group_name }}
+        containing IPs: {{ ips_of_managed_nodes }}
