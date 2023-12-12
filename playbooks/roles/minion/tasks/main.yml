@@ -1,21 +1,25 @@
-- name: Install EPEL packages
+- name: Install EPEL packages in CentOS
   yum:
     name: epel-release
     state: present
+  when: is_centos
 
 - name: Install snapd using yum
   yum:
     name: snapd
     state: latest
+  when: is_centos
 
 - name: Enable snap communication socket
   command: systemctl enable --now snapd.socket
+  when: is_centos
 
 - name: Create a sym link if not exist
   file:
     src: /var/lib/snapd/snap
     dest: /snap
     state: link
+  when: is_centos
 
 - name: Install Microk8s
   community.general.snap:
@@ -24,4 +28,4 @@
     classic: yes
 
 - name: Join as worker of the k8s cluster
-  shell: "snap run {{ hostvars['localhost']['become_a_node_comm>
+  shell: "snap run {{ hostvars['localhost']['become_a_node_command'] }}"

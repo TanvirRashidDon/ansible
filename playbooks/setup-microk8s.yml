@@ -14,9 +14,9 @@
     set_fact:
       become_a_node_command: "{{ run_from_worker.stdout }}"
 
-- name: Install microk8s on CentOS
+- name: Install microk8s on linux
   hosts: linux
   become: yes
   roles:
-  - linux
+  - minion
 ...
