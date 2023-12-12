@@ -1,4 +1,4 @@
-- name: Install and configure in CentOS
+- name: Install and configure snap in CentOS
   block:
   - name: Install EPEL packages
     yum:
