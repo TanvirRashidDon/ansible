@@ -1,3 +1,4 @@
+---
 - name: Install and configure snap in CentOS
   block:
   - name: Install EPEL packages
@@ -25,6 +26,3 @@
     name: microk8s
     state: present
     classic: yes
-
-- name: Join as worker of the k8s cluster
-  shell: "snap run {{ hostvars['localhost']['become_a_node_command'] }}"

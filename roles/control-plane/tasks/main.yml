@@ -1,7 +1,0 @@
-- name: Get the command to join. Create a new token for an hour
-  shell: "microk8s add-node --token-ttl 3600 | awk 'NR==2'"
-  register: run_from_worker
-
-- name: Set fact for the command
-  set_fact:
-    become_a_node_command: "{{ run_from_worker.stdout }}"

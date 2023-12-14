@@ -1,0 +1,13 @@
+---
+- name: Get the command to join. Create a new token for an hour
+  shell: "microk8s add-node --token-ttl 3600 | awk 'NR==2'"
+  register: run_from_worker
+
+- name: "Debug: printing the join command"
+  debug:
+    var: run_from_worker.stdout
+
+- name: Add K8S join command to a dummy host
+  add_host:
+    name: K8S_JOIN_HOLDER
+    command: "{{ run_from_worker.stdout }}"

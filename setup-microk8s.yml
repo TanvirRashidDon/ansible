@@ -1,13 +1,13 @@
 ---
 - name: Get microk8s cluster joining link from control plane node
   hosts: localhost
-  gather_facts: no
   roles:
-  - control-plane
+  - node-microk8s
+  - control-plane-microk8s
 
 - name: Install microk8s on linux
   hosts: linux
   become: yes
   roles:
-  - minion
-...
+  - node-microk8s
+  - worker-microk8s

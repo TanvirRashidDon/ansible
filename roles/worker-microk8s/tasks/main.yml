@@ -1,0 +1,5 @@
+---
+- name: Join as worker of the k8s cluster
+  shell: >
+    snap run {{ hostvars['K8S_JOIN_HOLDER']['command'] }}
+    --worker
