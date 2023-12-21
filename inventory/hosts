@@ -1,10 +1,9 @@
 ## host group goes here
 
 [linux]
-192.168.122.72
-192.168.122.194
+vm.centos
+vm.ubuntu
 
 [linux:vars]
 
 ansible_user=ansible
-ansible_password=!agoodpass

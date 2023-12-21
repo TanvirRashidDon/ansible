@@ -1,0 +1,11 @@
+- name: Generate ssh key pair in control node
+  hosts: localhost
+  become: yes
+  roles:
+  - ssh-keygen
+
+- name: Copy ssh public key in managed nodes
+  hosts: linux
+  become: yes
+  roles:
+  - ssh-copy-id

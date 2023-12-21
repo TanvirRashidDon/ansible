@@ -1,5 +1,0 @@
-- name: >
-    Switch to key based authentication 
-    from user password authentication
-  host: linux
-  become: true

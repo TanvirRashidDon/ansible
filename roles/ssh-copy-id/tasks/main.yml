@@ -1,0 +1,5 @@
+- name: Copy ssh key
+  authorized_key:
+    user: "{{ ansible_user }}"
+    key: "{{ hostvars['SSH_KEY_HOLDER']['public_key'] }}"
+    state: present

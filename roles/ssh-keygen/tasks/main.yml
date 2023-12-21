@@ -1,0 +1,11 @@
+- name: Generate ssh public key private key pair "{{ssh_key_filename}}"
+  openssh_keypair:
+    path: "{{ ssh_key_directory }}/{{ ssh_key_filename }}"
+    size: 4096
+    state: present
+  register: ssh_result
+
+- name: Add ssh public key to a dummy host
+  add_host:
+    name: SSH_KEY_HOLDER
+    public_key: "{{ ssh_result.public_key }}"
