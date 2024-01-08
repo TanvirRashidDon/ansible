@@ -1,4 +1,3 @@
----
 - name: Gather all facts from managed node
   hosts: linux
   become: true

@@ -1,4 +1,3 @@
----
 - name: Lets play with variables
   hosts: linux
   become: true
@@ -24,4 +23,3 @@
     - name: Print os version
       debug:
         var: os_version.stdout
-...

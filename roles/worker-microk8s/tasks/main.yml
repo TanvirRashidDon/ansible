@@ -1,5 +1,34 @@
----
-- name: Join as worker of the k8s cluster
-  shell: >
+- name: >
+    Make sure user has a dedicated home directory
+    and has appropriate ownership
+  file:
+    path: "/home/{{ ansible_user }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: > 
+    Give access to user: "{{ ansible_user }}"
+    to run Microk8s command
+  user:
+    name: "{{ansible_user}}"
+    append: yes
+    groups: microk8s
+  register: add_to_group_status
+
+- name: Reboot only if user is added
+  block: 
+  - name: Reboot 
+    reboot:
+  
+  - name: Wait till reboot is completed
+    wait_for_connection:
+      delay: 30
+      timeout: 300
+      sleep: 5
+  when: add_to_group_status['changed']
+
+- name: Join as worker to the k8s cluster
+  command: >
     snap run {{ hostvars['K8S_JOIN_HOLDER']['command'] }}
     --worker

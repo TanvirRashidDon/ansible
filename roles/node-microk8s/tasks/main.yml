@@ -1,4 +1,3 @@
----
 - name: Install and configure snap in CentOS
   block:
   - name: Install EPEL packages

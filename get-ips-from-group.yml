@@ -1,4 +1,3 @@
----
 - name: Get IPs from group
   hosts: localhost
   gather_facts: no

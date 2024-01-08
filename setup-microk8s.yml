@@ -1,4 +1,3 @@
----
 - name: Get microk8s cluster joining link from control plane node
   hosts: localhost
   roles:
